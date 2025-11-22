@@ -95,9 +95,10 @@ public class CheckersBoard extends JPanel {
             return false;
         }
 
-        // Для обычных шашек - только вперед на 1 клетку
         CheckersPiece piece = board[fromRow][fromCol];
+
         if (!piece.isKing()) {
+            // Для обычных шашек - только вперед на 1 клетку
             if (piece.getColor() == CheckersPiece.Color.WHITE) {
                 if (toRow > fromRow) return false; // Белые ходят только вверх
             } else {
@@ -108,10 +109,20 @@ public class CheckersBoard extends JPanel {
                 return false;
             }
         } else {
-            // Для дамок - любое количество клеток по диагонали
-            // Но пока 1 клетка
-            if (rowDiff != 1) {
-                return false;
+            // Для дамок - проверяем путь на пустоту
+            int rowDirection = (toRow > fromRow) ? 1 : -1;
+            int colDirection = (toCol > fromCol) ? 1 : -1;
+
+            int currentRow = fromRow + rowDirection;
+            int currentCol = fromCol + colDirection;
+
+            // Проверяем все клетки между начальной и конечной позицией
+            while (currentRow != toRow && currentCol != toCol) {
+                if (board[currentRow][currentCol] != null) {
+                    return false; // На пути есть препятствие
+                }
+                currentRow += rowDirection;
+                currentCol += colDirection;
             }
         }
 
