@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact name="Arr2CmdArgs:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/jar</output-path>
+    <root id="root">
+      <element id="archive" name="Arr2CmdArgs.jar">
+        <element id="module-output" name="Arr2CmdArgs" />
+      </element>
+    </root>
+  </artifact>
+</component>
