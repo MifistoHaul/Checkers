@@ -28,5 +28,4 @@ public class CheckersPiece {
     public String toString() {
         return color == Color.BLACK ? "B" : "W";
     }
-
 }
